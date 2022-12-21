@@ -1,0 +1,11 @@
+SELECT  Participant_Code,
+        Status,  
+        YEAR(Start_Time) AS Year, 
+        ROUND(AVG(Outage_MW), 2) AS Avg_Outage_MW_Loss, 
+        ROUND(AVG(TIMESTAMPDIFF(MINUTE, Start_time, End_Time))/1440, 2) AS
+        Average_Outage_Duration_Time_Days
+
+FROM AEMR
+WHERE Status = 'Approved' AND Reason = 'Forced' 
+GROUP BY Participant_Code, Year
+ORDER BY Year;

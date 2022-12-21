@@ -1,0 +1,6 @@
+SELECT Status, Reason,
+        COUNT(*) AS Total_Number_Outage_Events, MONTH(Start_Time) AS Month
+FROM AEMR
+WHERE Status = 'Approved' AND YEAR(Start_Time) = 2017
+GROUP BY Reason, Month
+ORDER BY Reason, Month;

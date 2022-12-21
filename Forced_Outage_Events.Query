@@ -1,0 +1,7 @@
+SELECT  COUNT(*) AS Total_Number_Outage_Events,
+        Reason,
+        YEAR(Start_Time) AS Year
+FROM AEMR
+WHERE Status = 'Approved' AND Reason = 'Forced'
+GROUP BY Year
+ORDER BY Reason, Year;

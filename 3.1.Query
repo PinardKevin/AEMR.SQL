@@ -1,0 +1,8 @@
+SELECT  COUNT(*) AS Total_Number_Outage_Events, 
+        Participant_Code,
+        Status,
+        YEAR(Start_Time) AS Year
+FROM AEMR
+WHERE Status = 'Approved' 
+GROUP BY Year, Participant_Code
+ORDER BY Year, Participant_Code;
